@@ -78,12 +78,13 @@ Make sure you have installed:
    ```bash
    git clone https://github.com/RisimaGala/DisasterAlleviationFoundationn.git
    cd DisasterAlleviationFoundationn
-   
-###Restore .NET dependencies:
+ ---  
+### Restore .NET dependencies:
 
   bash
 Copy code
 dotnet restore
+---
 ###3.(Optional) Set up your frontend if applicable:
 
 bash
