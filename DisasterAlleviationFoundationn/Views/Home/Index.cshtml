@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home - Disaster Alleviation Foundation";
+}
+
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Disaster Alleviation Foundation</h1>
+        <p class="hero-subtitle">Providing hope and help when disasters strike</p>
+
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <div class="mt-4">
+                <a asp-controller="Home" asp-action="Dashboard" class="btn btn-primary btn-lg me-3">
+                    <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="mt-4">
+                <a asp-controller="Auth" asp-action="Register" class="btn btn-primary btn-lg me-3">
+                    <i class="fas fa-user-plus me-2"></i>Join Us
+                </a>
+                <a asp-controller="Auth" asp-action="Login" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Rest of my existing home page content yay -->

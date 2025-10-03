@@ -1,0 +1,75 @@
+﻿@model DisasterAlleviationFoundationn.ViewModels.VolunteerViewModel
+@{
+    ViewData["Title"] = "Volunteer Opportunities";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center"><i class="fas fa-hands me-2"></i>Volunteer Opportunities</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Opportunities" method="post">
+                    <div class="mb-3">
+                        <label asp-for="InterestArea" class="form-label"></label>
+                        <select asp-for="InterestArea" class="form-control">
+                            <option value="">Select Area of Interest</option>
+                            <option value="EmergencyResponse">Emergency Response</option>
+                            <option value="ShelterManagement">Shelter Management</option>
+                            <option value="MedicalSupport">Medical Support</option>
+                            <option value="Logistics">Logistics & Distribution</option>
+                            <option value="Counseling">Counseling & Support</option>
+                            <option value="Administrative">Administrative Support</option>
+                        </select>
+                        <span asp-validation-for="InterestArea" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Availability" class="form-label"></label>
+                        <select asp-for="Availability" class="form-control">
+                            <option value="">Select Availability</option>
+                            <option value="Immediate">Immediately Available</option>
+                            <option value="Weekends">Weekends Only</option>
+                            <option value="Evenings">Evenings Only</option>
+                            <option value="Flexible">Flexible Schedule</option>
+                        </select>
+                        <span asp-validation-for="Availability" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Skills" class="form-label"></label>
+                        <textarea asp-for="Skills" class="form-control" rows="3" placeholder="Describe your relevant skills and experience"></textarea>
+                        <span asp-validation-for="Skills" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ContactInfo" class="form-label"></label>
+                        <input asp-for="ContactInfo" class="form-control" placeholder="Your email or phone number (optional)">
+                        <span asp-validation-for="ContactInfo" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input asp-for="HasTransportation" class="form-check-input">
+                        <label asp-for="HasTransportation" class="form-check-label">I have reliable transportation</label>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-user-check me-2"></i>Apply to Volunteer
+                        </button>
+                        <a asp-controller="Home" asp-action="Dashboard" class="btn btn-secondary btn-lg ms-2">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,446 @@
+/* Light Pink Color Scheme */
+:root {
+    --primary-pink: #f8d7da;
+    --secondary-pink: #f9e6e8;
+    --accent-pink: #f4b6c2;
+    --dark-pink: #d48a96;
+    --text-dark: #5a3a3f;
+    --text-light: #7a5a5f;
+    --white: #ffffff;
+}
+
+/* Global Styles */
+body {
+    background: linear-gradient(135deg, var(--secondary-pink) 0%, var(--primary-pink) 100%);
+    color: var(--text-dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* Navigation Bar - Light Pink */
+.navbar {
+    background: linear-gradient(135deg, var(--accent-pink) 0%, var(--dark-pink) 100%) !important;
+    box-shadow: 0 4px 15px rgba(212, 138, 150, 0.3);
+    border: none;
+}
+
+.navbar-brand {
+    color: var(--white) !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: var(--white) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: var(--secondary-pink) !important;
+        transform: translateY(-2px);
+    }
+
+/* Buttons - Pink Theme */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-pink) 0%, var(--dark-pink) 100%);
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--dark-pink) 0%, #c47582 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(212, 138, 150, 0.4);
+    }
+
+.btn-outline-primary {
+    border: 2px solid var(--accent-pink);
+    color: var(--dark-pink);
+    background: transparent;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+    .btn-outline-primary:hover {
+        background: var(--accent-pink);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+/* Cards - Soft Pink */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(212, 138, 150, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(212, 138, 150, 0.2);
+    }
+
+.card-header {
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--accent-pink) 100%);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 15px 15px 0 0 !important;
+    font-weight: 600;
+}
+
+/* Forms - Pink Accents */
+.form-control {
+    border: 2px solid var(--primary-pink);
+    border-radius: 10px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+    .form-control:focus {
+        border-color: var(--accent-pink);
+        box-shadow: 0 0 0 0.2rem rgba(244, 182, 194, 0.25);
+    }
+
+.form-label {
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* Alerts - Pink Variants */
+.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, var(--primary-pink) 100%);
+    border: 2px solid var(--accent-pink);
+    color: var(--text-dark);
+    border-radius: 10px;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da 0%, var(--accent-pink) 100%);
+    border: 2px solid var(--dark-pink);
+    color: var(--text-dark);
+    border-radius: 10px;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, var(--dark-pink) 0%, #c47582 100%);
+    color: var(--white);
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, rgba(248, 215, 218, 0.9) 0%, rgba(244, 182, 194, 0.8) 100%);
+    padding: 80px 0;
+    text-align: center;
+    border-radius: 20px;
+    margin: 30px 0;
+}
+
+.hero-title {
+    color: var(--text-dark);
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+
+/* Dashboard Specific Styles */
+.stat-card {
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-pink) 100%);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    border-left: 5px solid var(--accent-pink);
+    position: relative;
+    min-height: 140px;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(212, 138, 150, 0.1);
+}
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(212, 138, 150, 0.2);
+    }
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--dark-pink);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.stat-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: var(--accent-pink);
+    opacity: 0.3;
+}
+
+.stat-trend {
+    margin-top: 10px;
+}
+
+    .stat-trend small {
+        font-size: 0.85rem;
+    }
+
+.update-item {
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(248, 215, 218, 0.3);
+    transition: background 0.3s ease;
+    border: 1px solid rgba(244, 182, 194, 0.2);
+}
+
+    .update-item:hover {
+        background: rgba(248, 215, 218, 0.5);
+    }
+
+    .update-item h5 {
+        color: var(--dark-pink);
+        font-weight: bold;
+        margin: 10px 0 5px 0;
+    }
+
+    .update-item .text-muted {
+        color: var(--text-light) !important;
+    }
+
+/* Table Styling */
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background: linear-gradient(135deg, var(--primary-pink) 0%, var(--accent-pink) 100%);
+        color: var(--text-dark);
+    }
+
+    .table tbody tr:hover {
+        background-color: var(--secondary-pink);
+    }
+
+/* Navigation Icons */
+.nav-icon {
+    margin-right: 8px;
+    color: var(--dark-pink);
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.bg-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, var(--accent-pink) 100%) !important;
+    color: var(--text-dark) !important;
+}
+
+/* Ensure proper spacing for dashboard */
+.dashboard-container {
+    min-height: calc(100vh - 200px);
+}
+
+/* Profile Page Styles */
+.profile-image {
+    border: 5px solid var(--accent-pink);
+    box-shadow: 0 4px 15px rgba(212, 138, 150, 0.3);
+}
+
+.profile-stats {
+    background: linear-gradient(135deg, var(--white) 0%, var(--primary-pink) 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Enhanced Profile Styles */
+.profile-stat-item {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--primary-pink);
+}
+
+    .profile-stat-item:last-child {
+        border-bottom: none;
+    }
+
+.profile-stat-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--dark-pink);
+    display: block;
+}
+
+.profile-stat-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Activity Timeline */
+.activity-timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+    .activity-timeline::before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--accent-pink);
+    }
+
+.activity-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-pink);
+}
+
+    .activity-item::before {
+        content: '';
+        position: absolute;
+        left: -27px;
+        top: 20px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--dark-pink);
+        border: 2px solid var(--white);
+    }
+
+/* Danger zone styling */
+.danger-zone {
+    border: 2px solid #dc3545;
+    border-radius: 10px;
+    padding: 20px;
+    background: rgba(220, 53, 69, 0.05);
+}
+
+/* File input styling */
+.form-control[type="file"] {
+    padding: 8px;
+}
+
+    .form-control[type="file"]::file-selector-button {
+        background: linear-gradient(135deg, var(--accent-pink) 0%, var(--dark-pink) 100%);
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+    }
+
+        .form-control[type="file"]::file-selector-button:hover {
+            background: linear-gradient(135deg, var(--dark-pink) 0%, #c47582 100%);
+        }
+
+/* Additional Pink Shades for Variety */
+.bg-pink-light {
+    background-color: var(--primary-pink) !important;
+}
+
+.bg-pink-medium {
+    background-color: var(--accent-pink) !important;
+}
+
+.bg-pink-dark {
+    background-color: var(--dark-pink) !important;
+}
+
+.text-pink-dark {
+    color: var(--dark-pink) !important;
+}
+
+.text-pink-light {
+    color: var(--text-light) !important;
+}
+
+.border-pink {
+    border-color: var(--accent-pink) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .stat-card {
+        min-height: 120px;
+        padding: 20px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-icon {
+        font-size: 1.5rem;
+        top: 15px;
+        right: 15px;
+    }
+
+    .btn-lg {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    /* Profile responsive styles */
+    .profile-image {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    .profile-stat-number {
+        font-size: 1.5rem;
+    }
+
+    /* Activity timeline responsive */
+    .activity-timeline {
+        padding-left: 20px;
+    }
+
+    .activity-item::before {
+        left: -22px;
+    }
+}

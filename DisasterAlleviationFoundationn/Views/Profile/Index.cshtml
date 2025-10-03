@@ -1,0 +1,235 @@
+﻿@model DisasterAlleviationFoundationn.ViewModels.ProfileViewModel
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- Left Sidebar - Profile Overview -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="mb-0"><i class="fas fa-user-circle me-2"></i>Profile Overview</h4>
+                </div>
+                <div class="card-body text-center">
+                    <!-- Profile Picture -->
+                    <div class="mb-4">
+                        @if (!string.IsNullOrEmpty(Model.CurrentProfileImage))
+                        {
+                            <img src="@Model.CurrentProfileImage" class="rounded-circle profile-image mb-3" alt="Profile Picture"
+                                 style="width: 150px; height: 150px; object-fit: cover;">
+                            <form asp-action="RemoveProfileImage" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('Are you sure you want to remove your profile picture?')">
+                                    <i class="fas fa-trash me-1"></i>Remove
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <div class="rounded-circle bg-pink-medium d-inline-flex align-items-center justify-content-center mb-3"
+                                 style="width: 150px; height: 150px;">
+                                <i class="fas fa-user fa-4x text-white"></i>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- User Info -->
+                    <h5 class="text-pink-dark">@Model.FirstName @Model.LastName</h5>
+                    <p class="text-muted mb-2">@Model.Email</p>
+                    @if (!string.IsNullOrEmpty(Model.Location))
+                    {
+                        <p class="text-muted mb-3">
+                            <i class="fas fa-map-marker-alt me-1"></i>@Model.Location
+                        </p>
+                    }
+
+                    <!-- Member Since -->
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            Member since @Model.MemberSince.ToString("MMM yyyy")
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Your Impact</h6>
+                </div>
+                <div class="card-body">
+                    <div class="profile-stat-item">
+                        <span class="profile-stat-number">@Model.TotalIncidentsReported</span>
+                        <span class="profile-stat-label">Incidents Reported</span>
+                    </div>
+                    <div class="profile-stat-item">
+                        <span class="profile-stat-number">@Model.TotalDonationsMade</span>
+                        <span class="profile-stat-label">Donations Made</span>
+                    </div>
+                    <div class="profile-stat-item">
+                        <span class="profile-stat-number">@Model.TotalVolunteerApplications</span>
+                        <span class="profile-stat-label">Volunteer Applications</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h6 class="mb-0"><i class="fas fa-bolt me-2"></i>Quick Actions</h6>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a asp-action="Activity" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-history me-1"></i>View Activity
+                        </a>
+                        <a asp-action="ChangePassword" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-key me-1"></i>Change Password
+                        </a>
+                        <a asp-controller="Home" asp-action="Dashboard" class="btn btn-outline-info btn-sm">
+                            <i class="fas fa-tachometer-alt me-1"></i>Go to Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Content - Edit Profile -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Profile</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Index" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="FirstName" class="form-label"></label>
+                                    <input asp-for="FirstName" class="form-control" placeholder="Enter your first name">
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="LastName" class="form-label"></label>
+                                    <input asp-for="LastName" class="form-control" placeholder="Enter your last name">
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label"></label>
+                                    <input asp-for="Email" class="form-control" placeholder="Enter your email address">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="PhoneNumber" class="form-label"></label>
+                                    <input asp-for="PhoneNumber" class="form-control" placeholder="Enter your phone number">
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="NewLocation" class="form-label"></label>
+                                    <input asp-for="NewLocation" class="form-control" placeholder="Enter your location" value="@Model.Location">
+                                    <span asp-validation-for="NewLocation" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="ProfileImage" class="form-label">Profile Picture</label>
+                                    <input asp-for="ProfileImage" class="form-control" type="file" accept="image/*">
+                                    <span asp-validation-for="ProfileImage" class="text-danger"></span>
+                                    <small class="form-text text-muted">JPG, PNG, GIF - max 5MB</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Remove the Bio section - Database column doesn't exist *@
+                        @* <div class="mb-3">
+                            <label asp-for="NewBio" class="form-label"></label>
+                            <textarea asp-for="NewBio" class="form-control" rows="4" placeholder="Tell us about yourself...">@Model.Bio</textarea>
+                            <span asp-validation-for="NewBio" class="text-danger"></span>
+                            <small class="form-text text-muted">@(Model.NewBio?.Length ?? 0)/500 characters</small>
+                        </div> *@
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-save me-2"></i>Update Profile
+                            </button>
+                            <a asp-controller="Home" asp-action="Dashboard" class="btn btn-secondary btn-lg ms-2">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Account Management -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-cog me-2"></i>Account Management</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Security</h6>
+                            <p class="text-muted">Change your password and secure your account</p>
+                            <a asp-action="ChangePassword" class="btn btn-outline-primary">
+                                <i class="fas fa-key me-2"></i>Change Password
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-danger">Danger Zone</h6>
+                            <p class="text-muted">Permanently delete your account</p>
+                            <a asp-action="DeleteAccount" class="btn btn-outline-danger">
+                                <i class="fas fa-trash me-2"></i>Delete Account
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    @* Remove the Bio character counter script since Bio is commented out *@
+    @* <script>
+        // Character counter for bio
+        document.addEventListener('DOMContentLoaded', function() {
+            const bioTextarea = document.querySelector('#NewBio');
+            const charCount = document.querySelector('.form-text.text-muted');
+
+            if (bioTextarea && charCount) {
+                bioTextarea.addEventListener('input', function() {
+                    const length = this.value.length;
+                    charCount.textContent = length + '/500 characters';
+
+                    if (length > 500) {
+                        charCount.classList.add('text-danger');
+                    } else {
+                        charCount.classList.remove('text-danger');
+                    }
+                });
+            }
+        });
+    </script> *@
+}

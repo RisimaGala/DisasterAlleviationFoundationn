@@ -1,0 +1,230 @@
+﻿@model DisasterAlleviationFoundationn.ViewModels.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h1>
+            <p class="lead">Welcome to your disaster relief management dashboard</p>
+        </div>
+    </div>
+
+    <!-- Enhanced Statistics Cards -->
+    <div class="row mb-5">
+        <div class="col-md-3 mb-3">
+            <div class="stat-card">
+                <div class="stat-number" id="totalIncidents">0</div>
+                <div class="stat-label">Total Incidents</div>
+                <i class="fas fa-exclamation-triangle stat-icon"></i>
+                <div class="stat-trend">
+                    <small class="text-success">
+                        <i class="fas fa-arrow-up"></i> <span id="resolvedIncidents">@Model.ResolvedIncidents</span> resolved
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="stat-card">
+                <div class="stat-number" id="totalVolunteers">0</div>
+                <div class="stat-label">Active Volunteers</div>
+                <i class="fas fa-hands-helping stat-icon"></i>
+                <div class="stat-trend">
+                    <small class="text-info">
+                        <i class="fas fa-users"></i> <span id="activeUsers">@Model.ActiveUsers</span> active users
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="stat-card">
+                <div class="stat-number" id="totalDonations">0</div>
+                <div class="stat-label">Donations Received</div>
+                <i class="fas fa-donate stat-icon"></i>
+                <div class="stat-trend">
+                    <small class="text-warning">
+                        <i class="fas fa-clock"></i> <span id="pendingDonations">@Model.PendingDonations</span> pending
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="stat-card">
+                <div class="stat-number" id="userIncidents">0</div>
+                <div class="stat-label">Your Reports</div>
+                <i class="fas fa-clipboard-list stat-icon"></i>
+                <div class="stat-trend">
+                    <small class="text-primary">
+                        <i class="fas fa-user"></i> Your contributions
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real-time Updates Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0"><i class="fas fa-sync-alt me-2"></i>Real-time Updates</h4>
+                    <button id="refreshStats" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-redo me-1"></i>Refresh
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-3">
+                            <div class="update-item">
+                                <i class="fas fa-exclamation-circle text-warning fa-2x mb-2"></i>
+                                <h5 id="liveIncidents">@Model.TotalIncidents</h5>
+                                <p class="text-muted">Live Incidents</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="update-item">
+                                <i class="fas fa-hand-holding-usd text-success fa-2x mb-2"></i>
+                                <h5 id="liveDonations">@Model.TotalDonations</h5>
+                                <p class="text-muted">Total Donations</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="update-item">
+                                <i class="fas fa-users text-info fa-2x mb-2"></i>
+                                <h5 id="liveVolunteers">@Model.TotalVolunteers</h5>
+                                <p class="text-muted">Active Volunteers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3>Quick Actions</h3>
+            <div class="d-flex gap-3 flex-wrap">
+                <a asp-controller="Incident" asp-action="Report" class="btn btn-primary btn-lg">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Report New Incident
+                </a>
+                <a asp-controller="Donation" asp-action="Donate" class="btn btn-success btn-lg">
+                    <i class="fas fa-donate me-2"></i>Make a Donation
+                </a>
+                <a asp-controller="Volunteer" asp-action="Opportunities" class="btn btn-info btn-lg">
+                    <i class="fas fa-hands me-2"></i>Volunteer Opportunities
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Incidents -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4><i class="fas fa-history me-2"></i>Recent Disaster Incidents</h4>
+                </div>
+                <div class="card-body">
+                    @if (Model.RecentIncidents != null && Model.RecentIncidents.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Location</th>
+                                        <th>Type</th>
+                                        <th>Reported On</th>
+                                        <th>Status</th>
+                                        <th>People Affected</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var incident in Model.RecentIncidents)
+                                    {
+                                        <tr>
+                                            <td>@incident.Title</td>
+                                            <td>@incident.Location</td>
+                                            <td>@incident.DisasterType</td>
+                                            <td>@incident.ReportedOn.ToString("MMM dd, yyyy")</td>
+                                            <td>
+                                                <span class="badge bg-warning">@incident.Status</span>
+                                            </td>
+                                            <td>@incident.PeopleAffected</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No recent incidents reported.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Function to animate number counting with better error handling
+        function animateCounter(element, target, duration = 2000) {
+            if (!element || target === undefined || target === null) {
+                console.error('Invalid parameters for animateCounter');
+                return;
+            }
+
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        // Animate statistics on page load with error handling
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                const incidentsElement = document.getElementById('totalIncidents');
+                const volunteersElement = document.getElementById('totalVolunteers');
+                const donationsElement = document.getElementById('totalDonations');
+                const userIncidentsElement = document.getElementById('userIncidents');
+
+                if (incidentsElement) {
+                    const totalIncidents = @(Model?.TotalIncidents ?? 0);
+                    const totalVolunteers = @(Model?.TotalVolunteers ?? 0);
+                    const totalDonations = @(Model?.TotalDonations ?? 0);
+                    const userIncidents = @(Model?.UserIncidents ?? 0);
+
+                    animateCounter(incidentsElement, totalIncidents);
+                    animateCounter(volunteersElement, totalVolunteers);
+                    animateCounter(donationsElement, totalDonations);
+                    animateCounter(userIncidentsElement, userIncidents);
+                }
+
+                // Refresh statistics
+                const refreshButton = document.getElementById('refreshStats');
+                if (refreshButton) {
+                    refreshButton.addEventListener('click', function() {
+                        location.reload();
+                    });
+                }
+            } catch (error) {
+                console.error('Error in dashboard animation:', error);
+            }
+        });
+    </script>
+}
