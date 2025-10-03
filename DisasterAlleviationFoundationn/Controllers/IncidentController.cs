@@ -60,13 +60,13 @@ namespace DisasterAlleviationFoundationn.Controllers
                         Description = model.Description,
                         Location = model.Location,
                         DisasterType = model.DisasterType,
-                        OccurredOn = model.OccurredOn,
+                        OccurredOn = model.OccurredOn, // Fixed property name
                         ReportedOn = DateTime.Now,
                         SeverityLevel = model.SeverityLevel,
-                        PeopleAffected = model.PeopleAffected,
+                        PeopleAffected = model.PeopleAffected, // Fixed property name
                         Status = "Reported",
                         ImageUrl = imagePath,
-                        ReportedByUserId = reportedByUserId // Uses the safely parsed value
+                        ReportedByUserId = reportedByUserId
                     };
 
                     _context.DisasterIncidents.Add(incident);
@@ -75,7 +75,7 @@ namespace DisasterAlleviationFoundationn.Controllers
                     TempData["SuccessMessage"] = "Incident reported successfully! Our team will review it shortly.";
                     return RedirectToAction("Index", "Home");
                 }
-                catch (Exception) 
+                catch (Exception ex)
                 {
                     TempData["ErrorMessage"] = "Error reporting incident. Please try again.";
                 }

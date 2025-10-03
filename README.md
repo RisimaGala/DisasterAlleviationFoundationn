@@ -1,145 +1,217 @@
-# Disaster Alleviation Foundation
+Disaster Alleviation Foundation - ASP.NET MVC Application
+The Disaster Alleviation Foundation is a comprehensive web platform designed to coordinate disaster response efforts through efficient user management, real-time incident reporting, secure donation processing, and organized volunteer coordination. This ASP.NET Core MVC application provides a complete disaster management ecosystem.
 
+🚀 Core Features
+1. User Authentication & Security
+Secure Registration & Login: Cookie-based authentication with BCrypt password hashing
 
-> A software platform to support disaster relief efforts — coordinating aid, volunteers, and resources.
+Role Management: User, Volunteer, and Admin role support
 
----
+Profile Management: Complete user profile system with statistics tracking
 
-## Table of Contents
+Session Management: 30-day persistent login with "Remember Me" option
 
-- [About](#about)  
-- [Features](#features)  
-- [Tech Stack](#tech-stack)  
-- [Getting Started](#getting-started)  
-  - [Prerequisites](#prerequisites)  
-  - [Installation](#installation)  
-  - [Database setup](#database-setup)  
-  - [Running](#running)  
-- [Usage](#usage)  
-- [Contributing](#contributing)  
-- [License](#license)  
-- [Contact](#contact)  
+2. Disaster Incident Management
+Real-time Incident Reporting: Categorized disaster type reporting with severity levels
 
----
+Location Tracking: Geographic location and disaster zone mapping
 
-## About
+Status Monitoring: Incident status tracking from reported to resolved
 
-The **Disaster Alleviation Foundation** is a project aimed at simplifying and enhancing disaster response. It provides tools to:
+Image Support: Visual documentation through image uploads
 
-- Manage and distribute relief resources  
-- Coordinate volunteers  
-- Track affected areas and needs  
-- Interface with donors, government, NGOs, and communities  
+3. Donation Coordination
+Impact Tracking: Real-time donation statistics and progress visualization
 
-Its goal is to improve efficiency, transparency, and responsiveness during disasters.
+Transparent Reporting: Comprehensive donation history and impact assessment
 
----
+User Engagement: Personalized donation tracking for registered users
 
-## Features
+4. Volunteer Management
+Skills-Based Registration: Comprehensive skill catalog matching volunteers to needs
 
-- User authentication & roles (admin, volunteer, coordinator, donor)  
-- Dashboard for incident overview and metrics  
-- Resource request & dispatch system  
-- Volunteer scheduling and tracking  
-- Mapping / geolocation of affected zones  
-- Notifications & alerts  
-- Reporting & analytics  
+Opportunity Management: Categorized volunteer role assignments
 
----
+Availability Coordination: Flexible scheduling and task management
 
-## Tech Stack
+Performance Tracking: Volunteer contribution statistics and history
 
-| Layer                | Technology / Framework          |
-|----------------------|----------------------------------|
-| Backend / API        | ASP.NET Core Web API / C#        |
-| Frontend / UI        | (Your frontend library, e.g. React, Blazor, etc.) |
-| Database             | (e.g. SQL Server, PostgreSQL, etc.) |
-| ORM / Data Access    | Entity Framework Core (if used)  |
-| Hosting / Deployment | (Azure, AWS, Docker, etc.)       |
+🛠 Technology Stack
+Backend Framework
+ASP.NET Core MVC 8.0 - Modern web application framework
 
-_You can modify this table to match your actual implementation._
+Entity Framework Core - Data access with SQLite database
 
----
+BCrypt.Net-Next - Secure password hashing and verification
 
-## Getting Started
+Cookie Authentication - Persistent and secure user sessions
 
-### Prerequisites
+Frontend Development
+Bootstrap 5.3.0 - Responsive UI framework
 
-Make sure you have installed:
+Font Awesome 6.0 - Professional icon library
 
-- [.NET SDK (version X.X or above)](https://dotnet.microsoft.com/)  
-- A relational database (e.g. SQL Server, PostgreSQL)  
-- (Optional) Node.js / npm if frontend needs it  
+jQuery 3.6.0 - Client-side interactivity
 
-### Installation
+Custom CSS3 - Branded styling and animations
 
-### Installation & Setup
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/your-username/disaster-management-system.git
-    cd disaster-management-system
-    ```
+Development & Deployment
+Azure DevOps - CI/CD pipeline automation
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
+Git Version Control - Source code management
 
-3.  **Set up environment variables**
-    Create a `.env` file in the root directory and configure your database and other settings:
-    ```env
-    DATABASE_URL=your_postgresql_connection_string
-    SESSION_SECRET=your_secret_key
-    ```
-
-4.  **Initialize the database**
-    ```bash
-    npm run db:reset
-    ```
-
-5.  **Start the development server**
-    ```bash
-    npm run dev
-    ```
-    The application will be running at `http://localhost:3000`.
-
-## 👤 Usage
-
-Once the application is running, you can perform the following actions:
-
-### Authentication
-- **Log in** using the provided demo accounts:
-  - **Admin Account:** `admin@example.com` / `admin123`
-  - **Test User Account:** `test@example.com` / `test123`
-
-### Core Features
-- **Create New Disaster Incidents:** Log events, set severity levels, and define affected areas.
-- **Manage Resource Requests:** Add and track requests for critical supplies like water, food, and medical kits.
-- **Volunteer Coordination:** Assign available volunteers to incidents and track their dispatch status.
-- **Monitoring & Reporting:** View a real-time dashboard of all active incidents and generate summary reports.
-
-### UI Walkthrough
-
-#### Dashboard Overview
-The main dashboard provides an at-a-glance view of all active incidents and key metrics.
-![Dashboard Screenshot](./screenshots/dashboard.png)
-
-#### Creating a New Incident
-Easily log a new disaster event with details like location, type, and severity.
-![Create Incident GIF](./screenshots/create-incident.gif)
-
-#### Managing Resources
-Add and fulfill resource requests from the incident management page.
-![Resource Management Screenshot](./screenshots/resources.png)
-
----
+SQLite Database - Lightweight, file-based data storage
 
 
 
-## Author
 
--Author: Risima Gala
+📁 Application Architecture
+text
+DisasterAlleviationFoundation/
+├── Controllers/
+│   ├── AuthController.cs          # Authentication & user management
+│   ├── HomeController.cs          # Dashboard & main views
+│   ├── ProfileController.cs       # User profile management
+│   └── IncidentController.cs      # Disaster incident handling
+├── Models/
+│   ├── User.cs                    # User entity with relationships
+│   ├── DisasterIncident.cs        # Incident reporting structure
+│   ├── Volunteer.cs               # Volunteer management
+│   ├── Donation.cs                # Donation tracking
+│   └── ViewModels/                # UI data transfer objects
+├── Views/
+│   ├── Auth/                      # Authentication interfaces
+│   ├── Home/                      # Dashboard & landing pages
+│   ├── Profile/                   # User profile management
+│   └── Shared/                    # Layout components
+├── Data/
+│   └── ApplicationDbContext.cs    # Database context & configuration
+└── Program.cs                     # Application startup & configuration
+🗄 Database Schema
+Core Entities
+Users: Complete user profiles with authentication data
 
--GitHub: @RisimaGala
+DisasterIncidents: Comprehensive incident reporting with status tracking
 
--Email: your-email@example.com
+Donations: Financial and resource contribution records
+
+Volunteers: Skill-based volunteer profiles and assignments
+
+Skills: Categorized volunteer competency tracking
+
+Data Relationships
+One-to-Many: Users → IncidentReports (User reporting system)
+
+One-to-Many: Users → Donations (Contribution tracking)
+
+One-to-Many: Users → Volunteers (Participation history)
+
+Many-to-Many: Volunteers ↔ Skills (Competency mapping)
+
+🚀 Quick Start
+Prerequisites
+.NET 8.0 SDK
+
+Visual Studio 2022+
+
+Git version control
+
+Installation & Setup
+bash
+# Clone repository
+git clone [your-repository-url]
+cd DisasterAlleviationFoundation
+
+# Restore dependencies
+dotnet restore
+
+# Run database setup
+dotnet run
+Initial Configuration
+Database: SQLite database auto-created on first run
+
+Authentication: Cookie-based sessions with 30-day persistence
+
+File Storage: Local file system for image uploads
+
+Logging: Comprehensive debug and information logging
+
+🔧 Configuration
+Application Settings (appsettings.json)
+json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=DisasterAlleviation.db"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}
+📊 Key Functionality
+User Dashboard
+Real-time statistics on incidents, volunteers, and donations
+
+Personalized activity tracking and contribution history
+
+Quick access to reporting and participation features
+
+Incident Reporting
+Multi-category disaster classification
+
+Geographic location and severity assessment
+
+Visual documentation through image uploads
+
+Real-time status updates and tracking
+
+Security Implementation
+BCrypt password hashing with work factor 13
+
+Enhanced hash verification for cross-platform compatibility
+
+Secure session management with cookie authentication
+
+Input validation and sanitization throughout
+
+🛡 Security Features
+Password Protection: BCrypt hashing with salt
+
+Session Security: Cookie-based authentication with expiration
+
+Data Validation: Comprehensive client and server-side validation
+
+SQL Injection Prevention: Parameterized queries via Entity Framework
+
+XSS Protection: Input encoding and output escaping
+
+📈 Performance Optimization
+Asynchronous Operations: Non-blocking database operations
+
+Eager Loading: Optimized data retrieval with Include()
+
+Client-Side Validation: Reduced server load through pre-validation
+
+Static File Caching: Efficient asset delivery
+
+🤝 Development Workflow
+Branch Strategy
+main - Production-ready releases
+
+develop - Feature integration branch
+
+feature/* - Individual feature development
+
+hotfix/* - Emergency production fixes
+
+Quality Assurance
+Automated build validation on Azure DevOps
+
+Comprehensive error handling and logging
+
+User-friendly error messages and recovery flows
+
+Cross-browser compatibility testing
+

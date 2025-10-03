@@ -8,14 +8,24 @@ namespace DisasterAlleviationFoundationn.ViewModels
         [Display(Name = "Donation Type")]
         public string DonationType { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Description is required")]
-        public string Description { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Amount is required")]
+        [Range(1, double.MaxValue, ErrorMessage = "Amount must be greater than 0")]
+        public decimal Amount { get; set; }
 
-        [Required(ErrorMessage = "Quantity/Amount is required")]
-        [Display(Name = "Quantity/Amount")]
-        public string Quantity { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Donor name is required")]
+        [Display(Name = "Donor Name")]
+        [StringLength(100, ErrorMessage = "Donor name cannot exceed 100 characters")]
+        public string DonorName { get; set; } = string.Empty;
 
-        [Display(Name = "Your Contact Information")]
+        [Display(Name = "Description")]
+        [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
+        public string? Description { get; set; }
+
+        [Display(Name = "Contact Information")]
         public string? ContactInfo { get; set; }
+
+        [Display(Name = "Quantity")]
+        [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
+        public int Quantity { get; set; } = 1;
     }
 }

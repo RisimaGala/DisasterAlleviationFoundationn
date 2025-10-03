@@ -12,8 +12,7 @@ namespace DisasterAlleviationFoundationn.Controllers
     public class AuthController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly ILogger<AuthController> _logger
-            ;
+        private readonly ILogger<AuthController> _logger;
 
         public AuthController(ApplicationDbContext context, ILogger<AuthController> logger)
         {
@@ -73,7 +72,6 @@ namespace DisasterAlleviationFoundationn.Controllers
                 }
                 catch (Exception ex)
                 {
-                    // Log the actual error for debugging
                     _logger.LogError(ex, "Error during login for email: {Email}", model.Email);
                     ModelState.AddModelError(string.Empty, "An error occurred during login. Please try again.");
                 }
@@ -212,9 +210,6 @@ namespace DisasterAlleviationFoundationn.Controllers
             }
         }
 
-        // =============================================
-        // DEBUG AUTH METHOD ADDED HERE
-        // =============================================
         [HttpGet]
         public async Task<IActionResult> DebugAuth()
         {
@@ -222,12 +217,10 @@ namespace DisasterAlleviationFoundationn.Controllers
 
             try
             {
-                // 1. Check database connection
                 result.Add("1. Testing database connection...");
                 var userCount = await _context.Users.CountAsync();
                 result.Add($"   ✅ Database connected - {userCount} users found");
 
-                // 2. Check if we can create a test user
                 result.Add("2. Testing user creation...");
                 var testUser = new User
                 {
@@ -245,12 +238,10 @@ namespace DisasterAlleviationFoundationn.Controllers
                 var saveResult = await _context.SaveChangesAsync();
                 result.Add($"   ✅ User creation test - Saved: {saveResult}, ID: {testUser.Id}");
 
-                // 3. Test password verification
                 result.Add("3. Testing password verification...");
                 var verifyResult = VerifyPassword("test123", testUser.PasswordHash);
                 result.Add($"   ✅ Password verification: {verifyResult}");
 
-                // 4. Clean up test user
                 _context.Users.Remove(testUser);
                 await _context.SaveChangesAsync();
                 result.Add("   ✅ Test user cleaned up");
@@ -265,9 +256,6 @@ namespace DisasterAlleviationFoundationn.Controllers
             }
         }
 
-        // =============================================
-        // TEST SIMPLE METHOD ADDED RIGHT HERE
-        // =============================================
         [HttpGet]
         public async Task<IActionResult> TestSimple()
         {
@@ -275,14 +263,12 @@ namespace DisasterAlleviationFoundationn.Controllers
             {
                 var result = new List<string>();
 
-                // Test 1: Basic connection
                 result.Add("1. Testing database connection...");
                 var canConnect = await _context.Database.CanConnectAsync();
                 result.Add($"   Can connect: {canConnect}");
 
                 if (canConnect)
                 {
-                    // Test 2: Create a simple user directly
                     result.Add("2. Creating test user...");
                     var testUser = new User
                     {
@@ -300,17 +286,14 @@ namespace DisasterAlleviationFoundationn.Controllers
                     var saveResult = await _context.SaveChangesAsync();
                     result.Add($"   Save result: {saveResult}, User ID: {testUser.Id}");
 
-                    // Test 3: Try to retrieve the user
                     result.Add("3. Retrieving test user...");
                     var foundUser = await _context.Users.FindAsync(testUser.Id);
                     result.Add($"   User found: {foundUser != null}, Email: {foundUser?.Email}");
 
-                    // Test 4: Verify password
                     result.Add("4. Testing password verification...");
                     var passwordValid = BCrypt.Net.BCrypt.EnhancedVerify("password123", foundUser.PasswordHash);
                     result.Add($"   Password valid: {passwordValid}");
 
-                    // Clean up
                     _context.Users.Remove(testUser);
                     await _context.SaveChangesAsync();
                     result.Add("5. Test user cleaned up");
@@ -324,9 +307,6 @@ namespace DisasterAlleviationFoundationn.Controllers
             }
         }
 
-        // =============================================
-        // UPDATED BCRYPT METHODS WITH BETTER ERROR HANDLING
-        // =============================================
         private string HashPassword(string password)
         {
             try
@@ -336,10 +316,8 @@ namespace DisasterAlleviationFoundationn.Controllers
                     throw new ArgumentException("Password cannot be null or empty");
                 }
 
-                // Use enhanced hash for better compatibility
                 var hashed = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13);
 
-                // Verify the hash can be verified
                 if (!BCrypt.Net.BCrypt.EnhancedVerify(password, hashed))
                 {
                     throw new Exception("Generated hash cannot be verified");
@@ -364,7 +342,6 @@ namespace DisasterAlleviationFoundationn.Controllers
                     return false;
                 }
 
-                // Use enhanced verify for compatibility 
                 var result = BCrypt.Net.BCrypt.EnhancedVerify(password, hashedPassword);
 
                 if (!result)

@@ -19,5 +19,8 @@ namespace DisasterAlleviationFoundationn.ViewModels
 
         [Display(Name = "Contact Information")]
         public string? ContactInfo { get; set; }
+        public string FullName { get; internal set; }
+        public string Phone { get; internal set; }
+        public string Email { get; internal set; }
     }
 }
