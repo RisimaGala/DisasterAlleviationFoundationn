@@ -95,23 +95,26 @@ npm install
 Database Setup
 Configure your connection string in appsettings.json (or environment variables)
 ---
-Apply migrations (if using EF Core):
+### Apply migrations (if using EF Core):
 
 bash
 Copy code
 dotnet ef database update
-(Optional) Seed initial data:
+---
+### 3(Optional) Seed initial data:
 
 bash
 Copy code
 dotnet run --project YourProject.SeedData
-Running
-To run the backend API:
+---
+### Running
+-To run the backend API:
 
 bash
 Copy code
 dotnet run --project YourBackendProject
-To run frontend:
+---
+### To run frontend:
 
 bash
 Copy code
