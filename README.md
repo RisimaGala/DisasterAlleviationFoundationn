@@ -134,48 +134,13 @@ Add and fulfill resource requests from the incident management page.
 
 ---
 
-## 🤝 Contributing
 
-We welcome contributions from the community! Please follow these guidelines to ensure a smooth process.
 
-### How to Contribute
+## Author
 
-1.  **Fork the Repository**
-    Click the "Fork" button at the top right of this repository to create your own copy.
+Contact
+-Author: Risima Gala
 
-2.  **Create a Feature Branch**
-    Always create a new branch for your work. This keeps your changes isolated.
-    ```bash
-    git checkout -b feature/YourFeatureName
-    # or for bug fixes:
-    git checkout -b fix/DescriptionOfFix
-    ```
+-GitHub: @RisimaGala
 
-3.  **Make Your Changes**
-    Develop your feature or fix. Please adhere to the existing code style and conventions.
-
-4.  **Commit Your Changes**
-    Write clear, descriptive commit messages.
-    ```bash
-    git add .
-    git commit -m "feat: add real-time notification system for new requests"
-    ```
-
-5.  **Push to Your Branch**
-    ```bash
-    git push origin feature/YourFeatureName
-    ```
-
-6.  **Open a Pull Request (PR)**
-    Go to the original repository on GitHub and open a Pull Request from your feature branch.
-    -   Provide a clear title and description of your changes.
-    -   Reference any related issues (e.g., "Closes #123").
-
-### Code Standards
--   **Linting:** Run `npm run lint` before committing to ensure your code follows our style guide.
--   **Testing:** Include relevant unit or integration tests for new features. Run the test suite with `npm test`.
--   **Documentation:** Update documentation (like this README) if you change functionality.
-
----
-
-## 📄 License
+-Email: your-email@example.com
