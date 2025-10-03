@@ -73,104 +73,109 @@ Make sure you have installed:
 
 ### Installation
 
-1. Clone the repository:
+### Installation & Setup
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/your-username/disaster-management-system.git
+    cd disaster-management-system
+    ```
 
-   ```bash
-   git clone https://github.com/RisimaGala/DisasterAlleviationFoundationn.git
-   cd DisasterAlleviationFoundationn
- ---  
-### Restore .NET dependencies:
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-```bash
+3.  **Set up environment variables**
+    Create a `.env` file in the root directory and configure your database and other settings:
+    ```env
+    DATABASE_URL=your_postgresql_connection_string
+    SESSION_SECRET=your_secret_key
+    ```
 
-Copy code
-dotnet restore
-```
----
-### 3.(Optional) Set up your frontend if applicable:
+4.  **Initialize the database**
+    ```bash
+    npm run db:reset
+    ```
 
-```bash
+5.  **Start the development server**
+    ```bash
+    npm run dev
+    ```
+    The application will be running at `http://localhost:3000`.
 
-Copy code
-cd FrontendFolder
-npm install
-```
----
-Database Setup
-#
-Configure your connection string in appsettings.json (or environment variables)
----
-### Apply migrations (if using EF Core):
+## 👤 Usage
 
-```bash
+Once the application is running, you can perform the following actions:
 
-Copy code
-dotnet ef database update
-```
----
-### 3(Optional) Seed initial data:
+### Authentication
+- **Log in** using the provided demo accounts:
+  - **Admin Account:** `admin@example.com` / `admin123`
+  - **Test User Account:** `test@example.com` / `test123`
 
-```bash
-Copy code
-dotnet run --project YourProject.SeedData
-```
----
-### Running
--To run the backend API:
+### Core Features
+- **Create New Disaster Incidents:** Log events, set severity levels, and define affected areas.
+- **Manage Resource Requests:** Add and track requests for critical supplies like water, food, and medical kits.
+- **Volunteer Coordination:** Assign available volunteers to incidents and track their dispatch status.
+- **Monitoring & Reporting:** View a real-time dashboard of all active incidents and generate summary reports.
 
-```bash
-Copy code
-dotnet run --project YourBackendProject
-```
----
-### To run frontend:
+### UI Walkthrough
 
-```bash
-Copy code
-cd FrontendFolder
-npm start
-Your application should now be running (often on https://localhost:5001 or similar).
-```
----
-##Usage
+#### Dashboard Overview
+The main dashboard provides an at-a-glance view of all active incidents and key metrics.
+![Dashboard Screenshot](./screenshots/dashboard.png)
 
-Once running, you can:
+#### Creating a New Incident
+Easily log a new disaster event with details like location, type, and severity.
+![Create Incident GIF](./screenshots/create-incident.gif)
 
--Log in with admin or test accounts
-
--Create new disaster incidents
-
--Add resource requests (water, food, medical kits, etc.)
-
--Assign volunteers and track dispatch
-
--Monitor overall status and generate reports
-
--You can include screenshots or GIFs here to help illustrate the UI and flows.
+#### Managing Resources
+Add and fulfill resource requests from the incident management page.
+![Resource Management Screenshot](./screenshots/resources.png)
 
 ---
 
-##Contributing
+## 🤝 Contributing
 
-We welcome contributions! Please follow these steps:
+We welcome contributions from the community! Please follow these guidelines to ensure a smooth process.
 
-1.Fork the repository
+### How to Contribute
 
-2.Create a new branch: git checkout -b feature/YourFeatureName
+1.  **Fork the Repository**
+    Click the "Fork" button at the top right of this repository to create your own copy.
 
-3.Commit your changes: git commit -m "Add new feature"
+2.  **Create a Feature Branch**
+    Always create a new branch for your work. This keeps your changes isolated.
+    ```bash
+    git checkout -b feature/YourFeatureName
+    # or for bug fixes:
+    git checkout -b fix/DescriptionOfFix
+    ```
 
-4.Push to your branch: git push origin feature/YourFeatureName
+3.  **Make Your Changes**
+    Develop your feature or fix. Please adhere to the existing code style and conventions.
 
-5.Open a Pull Request
+4.  **Commit Your Changes**
+    Write clear, descriptive commit messages.
+    ```bash
+    git add .
+    git commit -m "feat: add real-time notification system for new requests"
+    ```
 
-Please make sure your code adheres to existing style conventions, and include tests where applicable.
+5.  **Push to Your Branch**
+    ```bash
+    git push origin feature/YourFeatureName
+    ```
 
+6.  **Open a Pull Request (PR)**
+    Go to the original repository on GitHub and open a Pull Request from your feature branch.
+    -   Provide a clear title and description of your changes.
+    -   Reference any related issues (e.g., "Closes #123").
 
+### Code Standards
+-   **Linting:** Run `npm run lint` before committing to ensure your code follows our style guide.
+-   **Testing:** Include relevant unit or integration tests for new features. Run the test suite with `npm test`.
+-   **Documentation:** Update documentation (like this README) if you change functionality.
 
-Contact
-Author / Maintainer: Risima Gala
+---
 
-GitHub: RisimaGala
-
-Email: your.email@example.com
+## 📄 License
