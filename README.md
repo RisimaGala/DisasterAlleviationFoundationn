@@ -1,7 +1,5 @@
 # Disaster Alleviation Foundation
 
-[![.NET](https://img.shields.io/badge/.NET-6-blue)](https://dotnet.microsoft.com/)  
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
 
 > A software platform to support disaster relief efforts — coordinating aid, volunteers, and resources.
 
@@ -148,8 +146,7 @@ Open a Pull Request
 
 Please make sure your code adheres to existing style conventions, and include tests where applicable.
 
-License
-This project is licensed under the MIT License — see the LICENSE file for details.
+
 
 Contact
 Author / Maintainer: Risima Gala
