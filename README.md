@@ -125,39 +125,44 @@ dotnet run --project YourBackendProject
 ---
 ### To run frontend:
 
-bash
+```bash
 Copy code
 cd FrontendFolder
 npm start
 Your application should now be running (often on https://localhost:5001 or similar).
+```
+---
+###Usage
 
-Usage
 Once running, you can:
 
-Log in with admin or test accounts
+-Log in with admin or test accounts
 
-Create new disaster incidents
+-Create new disaster incidents
 
-Add resource requests (water, food, medical kits, etc.)
+-Add resource requests (water, food, medical kits, etc.)
 
-Assign volunteers and track dispatch
+-Assign volunteers and track dispatch
 
-Monitor overall status and generate reports
+-Monitor overall status and generate reports
 
-You can include screenshots or GIFs here to help illustrate the UI and flows.
+-You can include screenshots or GIFs here to help illustrate the UI and flows.
 
-Contributing
+---
+
+###Contributing
+
 We welcome contributions! Please follow these steps:
 
-Fork the repository
+1.Fork the repository
 
-Create a new branch: git checkout -b feature/YourFeatureName
+2.Create a new branch: git checkout -b feature/YourFeatureName
 
-Commit your changes: git commit -m "Add new feature"
+3.Commit your changes: git commit -m "Add new feature"
 
-Push to your branch: git push origin feature/YourFeatureName
+4.Push to your branch: git push origin feature/YourFeatureName
 
-Open a Pull Request
+5.Open a Pull Request
 
 Please make sure your code adheres to existing style conventions, and include tests where applicable.
 
