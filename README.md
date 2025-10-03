@@ -81,18 +81,20 @@ Make sure you have installed:
  ---  
 ### Restore .NET dependencies:
 
-bash
-#
+```bash
+
 Copy code
 dotnet restore
+```
 ---
 ### 3.(Optional) Set up your frontend if applicable:
 
-bash
-#
+```bash
+
 Copy code
 cd FrontendFolder
 npm install
+```
 ---
 Database Setup
 #
@@ -100,23 +102,26 @@ Configure your connection string in appsettings.json (or environment variables)
 ---
 ### Apply migrations (if using EF Core):
 
-bash
-#
+```bash
+
 Copy code
 dotnet ef database update
+```
 ---
 ### 3(Optional) Seed initial data:
 
-bash
+```bash
 Copy code
 dotnet run --project YourProject.SeedData
+```
 ---
 ### Running
 -To run the backend API:
 
-bash
+```bash
 Copy code
 dotnet run --project YourBackendProject
+```
 ---
 ### To run frontend:
 
