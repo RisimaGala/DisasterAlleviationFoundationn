@@ -138,7 +138,6 @@ Add and fulfill resource requests from the incident management page.
 
 ## Author
 
-Contact
 -Author: Risima Gala
 
 -GitHub: @RisimaGala
