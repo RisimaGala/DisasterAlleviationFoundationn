@@ -132,7 +132,7 @@ npm start
 Your application should now be running (often on https://localhost:5001 or similar).
 ```
 ---
-###Usage
+##Usage
 
 Once running, you can:
 
@@ -150,7 +150,7 @@ Once running, you can:
 
 ---
 
-###Contributing
+##Contributing
 
 We welcome contributions! Please follow these steps:
 
